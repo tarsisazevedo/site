@@ -1,0 +1,42 @@
+baseurl = "http://tarsisazevedo.com/"
+canonifyurls = true
+languageCode = "pt-br"
+title = "Tarsis Azevedo"
+theme = "cactus"
+
+[params]
+	name = "Tarsis Azevedo"
+	description = "Programmer for fun and profit"
+	bio = "Programmer for fun and profit"
+	# Enter optionally your twitter account
+	twitter = "twitter.com/tarsisazevedo"
+	enableRSS = true
+
+	# The variables below are optionally too and can be used to
+	# translate or customize each string of the theme.
+
+	# Navigation links
+	home = ""
+	about = ""
+	subscribe = ""
+	# Pagination links
+	olderPosts = ""
+	newerPosts = ""
+	readMore = ""
+	copyright = ""
+	# Sharing options and author information in posts
+	aboutAuthor = "programmer for fun and profit"
+	tweet = ""
+	share = ""
+	# 404 page
+	title404 = ""
+	subtitle404 = ""
+
+    # Social icons style - circle, rounded, or empty
+    socialIconStyle = "rounded"
+
+# Add additional social link entries underneath
+[social]
+    twitter  = "https://www.twitter.com/tarsisazevedo"
+    github   = "https://www.github.com/tarsisazevedo"
+
