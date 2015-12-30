@@ -4,6 +4,7 @@ languageCode = "pt-br"
 title = "Tarsis Azevedo"
 theme = "cactus"
 googleAnalytics = "UA-60447533-1"
+disqusShortname = "sitetarsisazevedo"
 
 [params]
 	name = "Tarsis Azevedo"
