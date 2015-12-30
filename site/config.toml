@@ -3,6 +3,7 @@ canonifyurls = true
 languageCode = "pt-br"
 title = "Tarsis Azevedo"
 theme = "cactus"
+googleAnalytics = "UA-60447533-1"
 
 [params]
 	name = "Tarsis Azevedo"
