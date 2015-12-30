@@ -1,0 +1,53 @@
+---
+- hosts: web
+  vars:
+    - docroot: /data/www
+  tasks:
+    - name: Add Nginx Repository
+      apt_repository: repo='ppa:nginx/stable' state=present
+      register: ppastable
+
+    - name: Install Nginx
+      apt: pkg=nginx state=installed update_cache=true
+      when: ppastable|success
+      register: nginxinstalled
+      notify:
+        - Start Nginx
+
+    - name: Create Web Root
+      when: nginxinstalled|success
+      file: dest={{ docroot }} mode=775 state=directory owner=www-data group=www-data
+      notify:
+        - Reload Nginx
+
+    - name: Download Site
+      git: repo=https://tarsisazevedo@bitbucket.org/tarsisazevedo/site-pessoal.git dest=/tmp/site 
+      register: sitedownloaded
+
+    - name: Download Hugo
+      when: sitedownloaded|success
+      get_url: url=https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz dest=/tmp 
+      register: hugodownloaded
+
+    - name: Unarchive Hugo
+      when: hugodownloaded|success
+      unarchive: src=/tmp/hugo_0.15_linux_amd64.tar.gz dest=/tmp copy=no creates=/tmp/hugo_0.15_linux_amd64
+      register: hugounziped
+
+    - name: Copy Hugo
+      when: hugounziped|success
+      command: cp /tmp/hugo_0.15_linux_amd64/hugo_0.15_linux_amd64 /usr/local/bin/hugo
+      register: hugoinstalled
+
+    - name: Build Site
+      when: hugoinstalled|success
+      command: hugo --destination={{ docroot }} chdir=/tmp/site/site
+      notify:
+        - Reload Nginx
+
+  handlers:
+    - name: Start Nginx
+      service: name=nginx state=started
+
+    - name: Reload Nginx
+      service: name=nginx state=reloaded
