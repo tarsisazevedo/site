@@ -3,6 +3,6 @@ ansible.
 
 ## Technologies
 
-- [hugo](gohugo.io)
-- [ansible](ansible.com)
-- [cactus theme](themes.gohugo.io/theme/cactus/)
+- [hugo](http://gohugo.io)
+- [ansible](http://ansible.com)
+- [cactus theme](http://themes.gohugo.io/theme/cactus/)
