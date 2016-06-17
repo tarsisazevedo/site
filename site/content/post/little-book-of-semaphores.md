@@ -1,8 +1,8 @@
 +++
-date = "2016-06-17T20:54:04-02:00"
+date = "2016-06-16T23:54:04-02:00"
 description = ""
 title = "Book Review: The Little Book of Semaphores"
-
+draft = true
 +++
 
 The Little Book of Semaphores (TLBoS) é um livro escrito por Allen B. Downey,
