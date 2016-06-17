@@ -3,13 +3,17 @@
   vars:
     - docroot: /var/www/html
   tasks:
+    - name: Install git
+      apt: pkg=git state=installed update_cache=true
+      register: gitinstalled
+
     - name: Download Site
       when: gitinstalled|success
       git: repo=https://tarsisazevedo@bitbucket.org/tarsisazevedo/site-pessoal.git dest=/tmp/site
       register: sitedownloaded
 
     - name: Build Site
-      when: hugoinstalled|success
+      when: sitedownloaded|success
       command: hugo --destination={{ docroot }} chdir=/tmp/site/site
       notify:
         - Reload Nginx
