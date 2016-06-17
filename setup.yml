@@ -1,0 +1,46 @@
+---
+- hosts: web
+  vars:
+    - docroot: /var/www/html
+  tasks:
+    - name: Add Nginx Repository
+      apt_repository: repo='ppa:nginx/stable' state=present
+      register: ppastable
+
+    - name: Install Nginx
+      apt: pkg=nginx state=installed update_cache=true
+      when: ppastable|success
+      register: nginxinstalled
+      notify:
+        - Start Nginx
+
+    - name: Install git
+      apt: pkg=git state=installed update_cache=true
+      register: gitinstalled
+
+    - name: Create Web Root
+      when: nginxinstalled|success
+      file: dest={{ docroot }} mode=775 state=directory owner=www-data group=www-data
+      notify:
+        - Reload Nginx
+
+    - name: Download Hugo
+      get_url: url=https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz dest=/tmp
+      register: hugodownloaded
+
+    - name: Unarchive Hugo
+      when: hugodownloaded|success
+      unarchive: src=/tmp/hugo_0.15_linux_amd64.tar.gz dest=/tmp copy=no creates=/tmp/hugo_0.15_linux_amd64
+      register: hugounziped
+
+    - name: Copy Hugo
+      when: hugounziped|success
+      command: cp /tmp/hugo_0.15_linux_amd64/hugo_0.15_linux_amd64 /usr/local/bin/hugo
+      register: hugoinstalled
+
+  handlers:
+    - name: Start Nginx
+      service: name=nginx state=started
+
+    - name: Reload Nginx
+      service: name=nginx state=reloaded
