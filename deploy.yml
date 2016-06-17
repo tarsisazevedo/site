@@ -9,7 +9,7 @@
 
     - name: Download Site
       when: gitinstalled|success
-      git: repo=https://tarsisazevedo@bitbucket.org/tarsisazevedo/site-pessoal.git dest=/tmp/site
+      git: repo=https://github.com/tarsisazevedo/site.git dest=/tmp/site
       register: sitedownloaded
 
     - name: Build Site
