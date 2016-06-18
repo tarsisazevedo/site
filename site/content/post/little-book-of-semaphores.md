@@ -8,8 +8,8 @@ title = "Book Review: The Little Book of Semaphores"
 The Little Book of Semaphores (TLBoS) é um livro escrito por Allen B. Downey,
 free e disponibilizado no [site do
 autor](http://www.greenteapress.com/semaphores/). Lá ele oferece a versao em
-[PDF](http://www.greenteapress.com/semaphores/downey08semaphores.pdf) e
-[LaTeX](http://www.greenteapress.com/semaphores/downey08semaphores.tar), mas
+[PDF](http://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf) e
+[LaTeX](https://github.com/AllenDowney/LittleBookOfSemaphores), mas
 como tenho kindle, gerei a versao mobi e você pode [baixa-la
 aqui](http://bit.ly/TLBoS).
 
