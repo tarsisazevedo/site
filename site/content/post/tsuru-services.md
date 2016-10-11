@@ -1,7 +1,8 @@
-++++++
-title = "how to have tsuru + services"
++++
 draft = true
-++++++
+title = "how to have tsuru + services"
+date = "2016-10-12T23:54:04-02:00"
++++
 
 
 ## Instalando o tsuru
@@ -13,10 +14,12 @@ criamos um comando no nosso client para subir uma instalação all-in-one.  Para
 instalar o client do tsuru, seguir os comandos abaixo.
 
 Mac OS:
+
     $ brew tap 
     $ brew install --devel tsuru
 
 Linux:
+
     $ sudo apt-add-repository ppa/tsuru
     $ sudo apt-get update
     $ sudo apt-get install tsuru
