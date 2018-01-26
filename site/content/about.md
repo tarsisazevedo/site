@@ -6,8 +6,7 @@ title = "about"
 +++
 Hi, my name is Tarsis Azevedo and I'm a programmer!
 
-I work at globo.com in [tsuru](https://tsuru.io) project, an open source PaaS
-based in docker.
+I work at jusbrasil and data bootcamp br!
 
 I'm interested in new programming languages and programming techniques.
  
